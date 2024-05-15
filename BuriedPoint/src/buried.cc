@@ -1,3 +1,5 @@
+#include "include/buried.h"
+
 #include <iostream>
 
 #include "buried_core.h"

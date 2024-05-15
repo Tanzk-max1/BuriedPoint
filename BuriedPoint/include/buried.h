@@ -3,10 +3,11 @@
 #include <stdint.h>
 
 #define BURIED_EXPORT __declspec(dllexport)
+//因为对外给出的是个DLL动态库，动态库需要到处符号才能给外部调用，否则外部无法使用这些函数
 
 
-
-extern "C"{
+extern "C" {
+    
 BURIED_EXPORT int BuriedTest();
 
 typedef struct Buried Buried;
@@ -18,8 +19,8 @@ struct BuriedConfig
     const char* topic;
     const char* user_id;
     const char* version;
-    const char* app_version;
-    const char* app_name;
+    // const char* app_version;
+    // const char* app_name;
     const char* custom_data;
 
 };
@@ -45,8 +46,10 @@ BURIED_EXPORT void Buried_Destroy(Buried* buried);
 
 BURIED_EXPORT int32_t Buried_Start(Buried* buried, BuriedConfig* config);
 
-BURIED_EXPORT int32_t Buried_Report(Buried* buried, const char* title,const char* report_data,
-                                    uint32_t priority);
+// BURIED_EXPORT int32_t Buried_Report(Buried* buried, const char* title,const char* report_data,
+//                                     uint32_t priority);
 
+BURIED_EXPORT int32_t Buried_Report(Buried* buried, const char* report_data,
+                                    uint32_t priority);
 }
 

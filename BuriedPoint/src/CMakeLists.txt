@@ -1,7 +1,14 @@
 include_guard(GLOBAL)
 
+include_directories(third_party/spdlog/include)
+
+add_compile_definitions(SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE)
+
+add_subdirectory(third_party/spdlog)
+
 set(BURIED_SRCS
-    buried.cc)
+    buried.cc
+    buried_core.cc)
 
 set(MODULE_NAME "Buried")
 
